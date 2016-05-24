@@ -82,6 +82,11 @@
                 disallowGoFuturMonths: '=?',
                 /*
                  * Type: boolean
+                 * if true buttons for switching months aren`t shown
+                 * */
+                showBackFutureMonths: '=?',
+                /*
+                 * Type: boolean
                  * if true empty boxes will be filled with days of previous/next month
                  * */
                 showDaysOfSurroundingMonths: '=?',
@@ -108,9 +113,9 @@
             },
             template: '<div class="multiple-date-picker">' +
             '<div class="picker-top-row">' +
-            '<div class="text-center picker-navigate picker-navigate-left-arrow" ng-class="{\'disabled\':disableBackButton}" ng-click="previousMonth()">&lt;</div>' +
+            '<div class="text-center picker-navigate picker-navigate-left-arrow" ng-class="{\'disabled\':disableBackButton}" ng-click="previousMonth()" ng-show="showBackFutureMonths">&lt;</div>' +
             '<div class="text-center picker-month">{{month.format(\'MMMM YYYY\')}}</div>' +
-            '<div class="text-center picker-navigate picker-navigate-right-arrow" ng-class="{\'disabled\':disableNextButton}" ng-click="nextMonth()">&gt;</div>' +
+            '<div class="text-center picker-navigate picker-navigate-right-arrow" ng-class="{\'disabled\':disableNextButton}" ng-click="nextMonth()" ng-show="showBackFutureMonths">&gt;</div>' +
             '</div>' +
             '<div class="picker-days-week-row">' +
             '<div class="text-center" ng-repeat="day in daysOfWeek">{{day}}</div>' +
@@ -179,6 +184,7 @@
                 scope.disableNextButton = false;
                 scope.daysOfWeek = getDaysOfWeek();
                 scope.cssDaysOfSurroundingMonths = scope.cssDaysOfSurroundingMonths || 'picker-empty';
+                scope.showBackFutureMonths = scope.showBackFutureMonths || false;
 
                 /**
                  * Called when user clicks a date
