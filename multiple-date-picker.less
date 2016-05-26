@@ -58,7 +58,7 @@
   color:@pickable-day-non-picked-color;
 }
 
-.picker-day.today, .picker-day.today:hover, .picker-day.today.picker-selected {
+.picker-day.today, .picker-day.today:hover, .picker-day.today.picker-selected, .picker-day.today.picker-off, .picker-day.today.picker-off:hover{
   color: @picker-day-today;
 }
 
@@ -72,6 +72,12 @@
   border: 1px solid @picker-day-today;
 }
 
+.picker-day.picker-off, .picker-day.picker-off:hover{
+  background-color: @non-pickable-day-background;
+  color: @non-pickable-day-color;
+  cursor: default;
+}
+
 .picker-day.picker-empty, .picker-day.picker-empty:hover{
   background-color: @empty-day-background;
   cursor: default;
@@ -79,12 +85,10 @@
 
 // custom css
 
-.picker-day.today.picker-off, .picker-day.today.picker-off:hover {
-  background-color: @non-pickable-day-background;
-  color: @non-pickable-day-color;
-}
-
-.picker-day.today.picker-half, .picker-day.today.picker-half:hover {
+/*
+ * HALF
+ */
+.picker-day.half{
   color: @pickable-day-non-picked-color;
   background: repeating-linear-gradient(
     45deg,
@@ -95,7 +99,36 @@
   );
 }
 
-.picker-day.today.picker-on, .picker-day.today.picker-on:hover {
+.picker-day.half.picker-selected{
+    // use default
+}
+
+.picker-day.half.picker-off{
+    // use default
+}
+
+.picker-day.half:not(.picker-off):hover{
+    background-color: #00e795;
+    color: #fff;
+}
+
+/*
+ * ONline
+ */
+.picker-day.on{
   background-color: #dff0d8;
   color: @non-pickable-day-color;
+}
+
+.picker-day.on.picker-selected{
+    // use default
+}
+
+.picker-day.half.picker-off{
+    // use default
+}
+
+.picker-day.on:not(.picker-off):hover{
+    background-color: #00e795;
+    color: #fff;
 }
