@@ -58,10 +58,6 @@
   color:@pickable-day-non-picked-color;
 }
 
-.picker-day.today, .picker-day.today:hover, .picker-day.today.picker-selected, .picker-day.today.picker-off, .picker-day.today.picker-off:hover{
-  color: @picker-day-today;
-}
-
 .picker-day:not(.picker-off):not(.picker-empty):hover {
   background-color: @pickable-day-picked-background;
   color: @pickable-day-picked-color;
@@ -69,7 +65,8 @@
 }
 
 .picker-day.picker-selected{
-  border: 1px solid @picker-day-today;
+  background-color: @picker-day-today;
+  color: @pickable-day-picked-color;
 }
 
 .picker-day.picker-off, .picker-day.picker-off:hover{
@@ -83,7 +80,29 @@
   cursor: default;
 }
 
-// custom css
+// classes
+
+/*
+ * TODAY
+ */
+.picker-day.today{
+  color: @pickable-day-picked-color;
+  background-color: @pickable-day-non-picked-color;
+  text-decoration: underline;
+}
+
+.picker-day.today.picker-selected{
+    // use default
+}
+
+.picker-day.today.picker-off{
+    // use default
+}
+
+.picker-day.today:not(.picker-off):hover{
+    background-color: #00e795;
+    color: #fff;
+}
 
 /*
  * HALF
@@ -113,7 +132,7 @@
 }
 
 /*
- * ONline
+ * ON
  */
 .picker-day.on{
   background-color: #dff0d8;
