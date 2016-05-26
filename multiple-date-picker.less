@@ -10,7 +10,7 @@
 @pickable-day-non-picked-background: #fff;
 @pickable-day-non-picked-color: #000;
 
-@pickable-day-picked-background: #C6000B;
+@pickable-day-picked-background: @picker-day-today;
 @pickable-day-picked-color: #fff;
 
 .text-center{
@@ -70,12 +70,11 @@
 }
 
 .picker-day.picker-selected{
-  background-color: @pickable-day-picked-background;
-  color: @pickable-day-picked-color;
+  border: 1px solid @picker-day-today;
 }
 
 .picker-day.picker-off, .picker-day.picker-off:hover{
-  background-color: @non-pickable-day-background;
+  background-color: darken(@pickable-day-non-picked-background, 10%);
   color: @non-pickable-day-color;
   cursor: default;
 }
