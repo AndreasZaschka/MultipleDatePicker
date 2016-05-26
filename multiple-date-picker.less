@@ -58,9 +58,8 @@
   color:@pickable-day-non-picked-color;
 }
 
-.picker-day.today, .picker-day.today:hover, .picker-day.today.picker-selected, .picker-day.today.picker-off, .picker-day.today.picker-off:hover{
+.picker-day.today, .picker-day.today:hover, .picker-day.today.picker-selected {
   color: @picker-day-today;
-  font-weight: bold;
 }
 
 .picker-day:not(.picker-off):not(.picker-empty):hover {
@@ -73,13 +72,30 @@
   border: 1px solid @picker-day-today;
 }
 
-.picker-day.picker-off, .picker-day.picker-off:hover{
-  background-color: darken(@pickable-day-non-picked-background, 10%);
-  color: @non-pickable-day-color;
-  cursor: default;
-}
-
 .picker-day.picker-empty, .picker-day.picker-empty:hover{
   background-color: @empty-day-background;
   cursor: default;
+}
+
+// custom css
+
+.picker-day.today.picker-off, .picker-day.today.picker-off:hover {
+  background-color: @non-pickable-day-background;
+  color: @non-pickable-day-color;
+}
+
+.picker-day.today.picker-half, .picker-day.today.picker-half:hover {
+  color: @pickable-day-non-picked-color;
+  background: repeating-linear-gradient(
+    45deg,
+    @non-pickable-day-background,
+    @non-pickable-day-background 10px,
+    @pickable-day-non-picked-background 10px,
+    @pickable-day-non-picked-background 20px
+  );
+}
+
+.picker-day.today.picker-on, .picker-day.today.picker-on:hover {
+  background-color: #dff0d8;
+  color: @non-pickable-day-color;
 }
