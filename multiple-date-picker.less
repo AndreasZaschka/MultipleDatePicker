@@ -1,16 +1,18 @@
-@border-color: #eee;
+@import "variables.less";
+
+@border-color: @box-border-color;
 
 @empty-day-background: #fafafa;
 
-@picker-day-today: #00a3ff;
+@picker-day-today: @aqua;
 
-@non-pickable-day-background: #eee;
-@non-pickable-day-color: #bbb;
+@non-pickable-day-background: @sidebar-dark-bg;
+@non-pickable-day-color: @sidebar-dark-color;
 
-@pickable-day-non-picked-background: #fff;
-@pickable-day-non-picked-color: #000;
+@pickable-day-non-picked-background: @sidebar-light-bg;
+@pickable-day-non-picked-color: @sidebar-light-color;
 
-@pickable-day-picked-background: @picker-day-today;
+@pickable-day-picked-background: @light-blue;
 @pickable-day-picked-color: #fff;
 
 .text-center{
@@ -55,23 +57,23 @@
   background-color: @pickable-day-non-picked-background;
   border: 1px solid @border-color;
   box-sizing: border-box;
-  color:@pickable-day-non-picked-color;
+  color: @pickable-day-non-picked-color;
 }
 
 .picker-day:not(.picker-off):not(.picker-empty):hover {
-  background-color: @pickable-day-picked-background;
-  color: @pickable-day-picked-color;
+  background-color: @sidebar-light-hover-bg;
+  color: @sidebar-light-hover-color;
   cursor: pointer;
 }
 
 .picker-day.picker-selected{
-  background-color: @picker-day-today;
+  background-color: @light-blue;
   color: @pickable-day-picked-color;
 }
 
 .picker-day.picker-off, .picker-day.picker-off:hover{
-  background-color: @non-pickable-day-background;
-  color: @non-pickable-day-color;
+  background-color: darken(@red, 60%);
+  color: @pickable-day-picked-color;
   cursor: default;
 }
 
@@ -87,7 +89,7 @@
  */
 .picker-day.today{
   color: @pickable-day-picked-color;
-  background-color: @pickable-day-non-picked-color;
+  background-color: @picker-day-today;
   text-decoration: underline;
 }
 
@@ -100,43 +102,69 @@
 }
 
 .picker-day.today:not(.picker-off):hover{
-    background-color: #00e795;
-    color: #fff;
+    // use default
 }
 
 /*
- * HALF
+ * HALF-OFF
  */
-.picker-day.half{
-  color: @pickable-day-non-picked-color;
+.picker-day.half-off{
+  color: #000000;
   background: repeating-linear-gradient(
     45deg,
-    @non-pickable-day-background,
-    @non-pickable-day-background 10px,
-    @pickable-day-non-picked-background 10px,
-    @pickable-day-non-picked-background 20px
+    darken(@red, 60%),
+    darken(@red, 60%) 10px,
+    darken(@pickable-day-picked-color, 20%) 10px,
+    darken(@pickable-day-picked-color, 20%) 20px
   );
 }
 
-.picker-day.half.picker-selected{
+.picker-day.half-off.picker-selected{
     // use default
 }
 
-.picker-day.half.picker-off{
+.picker-day.half-off.picker-off{
     // use default
 }
 
-.picker-day.half:not(.picker-off):hover{
-    background-color: #00e795;
-    color: #fff;
+.picker-day.half-off:not(.picker-off):hover{
+  background-color: darken(@red, 20%);
+  color: @pickable-day-picked-color;
+}
+
+/*
+ * HALF-ON
+ */
+.picker-day.half-on{
+  color: #000000;
+  background: repeating-linear-gradient(
+          45deg,
+          darken(@green, 60%),
+          darken(@green, 60%) 10px,
+          darken(@pickable-day-picked-color, 20%) 10px,
+          darken(@pickable-day-picked-color, 20%) 20px
+  );
+}
+
+.picker-day.half-on.picker-selected{
+  // use default
+}
+
+.picker-day.half-on.picker-off{
+  // use default
+}
+
+.picker-day.half-on:not(.picker-off):hover{
+  background-color: darken(@green, 20%);
+  color: @pickable-day-picked-color;
 }
 
 /*
  * ON
  */
 .picker-day.on{
-  background-color: #dff0d8;
-  color: @non-pickable-day-color;
+  background-color: @green;
+  color: @pickable-day-picked-color;
 }
 
 .picker-day.on.picker-selected{
@@ -148,6 +176,6 @@
 }
 
 .picker-day.on:not(.picker-off):hover{
-    background-color: #00e795;
-    color: #fff;
+  background-color: darken(@green, 20%);
+  color: @pickable-day-picked-color;
 }
